@@ -1,4 +1,5 @@
-passport-sample
-===============
+## How to
 
-Passport.js sample
+1. Launch `mongod`
+2. Install all dependencies by `npm i`
+3. Launch app by `NODE_ENV=development node app.js`
