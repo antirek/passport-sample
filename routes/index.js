@@ -23,9 +23,6 @@ module.exports = function() {
   // Basic routes
   this.get('/',              controllers.render('public'));
   this.get('/private',       controllers.render('private'));
-  this.get('/private/room', function (req, res) {
-    res.render('webrtc/room', {user: req.user});
-  }); 
   this.get('/fail',          controllers.render('fail'));
 
 
@@ -33,5 +30,16 @@ module.exports = function() {
   this.post('/login',        controllers.users.login);
   this.post('/register',     controllers.users.register);
   this.get('/logout',        controllers.users.logout);
+
+  //Private room call
+  this.get('/private/room', function (req, res) {
+    res.render('webrtc/room', {
+      user: req.user, 
+      peer:{ 
+        host: '192.168.1.37',
+      }
+    });
+  });
+
 
 };
