@@ -23,6 +23,9 @@ module.exports = function() {
   // Basic routes
   this.get('/',              controllers.render('public'));
   this.get('/private',       controllers.render('private'));
+  this.get('/private/room', function (req, res) {
+    res.render('webrtc/room', {user: req.user});
+  }); 
   this.get('/fail',          controllers.render('fail'));
 
 

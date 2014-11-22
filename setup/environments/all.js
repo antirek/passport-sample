@@ -25,8 +25,8 @@ module.exports = function() {
   this.use(express.methodOverride());
   this.use(passport.initialize());
   this.use(passport.session());
-  this.use(this.router);
   this.use(express.static(rootDir, '/public'));
+  this.use(this.router);
   this.use(express.errorHandler());
 };
 

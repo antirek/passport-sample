@@ -5,7 +5,6 @@
  */
 //var log            = require('winston-wrapper')(module);
 var config         = require('nconf');
-
 var passport       = require('passport');
 
 // End of dependencies.

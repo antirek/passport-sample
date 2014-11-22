@@ -23,5 +23,5 @@ var pwd       = process.env.PWD;
 
 module.exports = function() {
   // Setup nconf
-  config.file({'file': pwd+'/config.json'});
+  config.file({'file': pwd + '/config.json'});
 };
