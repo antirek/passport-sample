@@ -19,7 +19,7 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  books: []
+  friends: []
 });
 
 mongoose.model('user', UserSchema);

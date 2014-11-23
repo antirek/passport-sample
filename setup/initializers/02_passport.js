@@ -30,7 +30,7 @@ module.exports = function() {
     usernameField: 'email',
     passwordField: 'password'
   }, function(username, password,done){
-    User.findOne({ username : username},function(err,user){
+    User.findOne({ username : username}, function (err,user) {
       return err 
         ? done(err)
         : user

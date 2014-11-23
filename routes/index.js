@@ -9,7 +9,7 @@ var config                   = require('nconf');
 var requireTree              = require('require-tree');
 var controllers              = requireTree('../controllers');
 var mustAuthenticatedMw      = require('../middlewares/must-authenticated');  
-
+var User                     = require('mongoose').model('user');
 // End of dependencies.
 
 
@@ -33,12 +33,18 @@ module.exports = function() {
 
   //Private room call
   this.get('/private/room', function (req, res) {
-    res.render('webrtc/room', {
-      user: req.user, 
-      peer:{ 
-        host: '192.168.1.37',
-      }
-    });
+    console.log(req.user);
+    User.find({_id : {$in : req.user.friends}}, function(err, friends){
+      res.render('webrtc/room', {
+        user: req.user,
+        friends: friends,
+        peer:{ 
+          host: '192.168.1.37',
+        }
+      });
+      
+    })
+    
   });
 
 
