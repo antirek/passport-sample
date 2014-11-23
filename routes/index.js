@@ -31,6 +31,18 @@ module.exports = function() {
   this.post('/register',     controllers.users.register);
   this.get('/logout',        controllers.users.logout);
 
+  this.post('/private/addfriend', function (req, res) {
+    console.log(req.body.friend_username);
+    User.findOne({username: req.body.friend_username}, function(err, friend){
+      console.log(friend._id)
+      User.findOneAndUpdate({_id: req.user.id},{$push:{friends : friend._id}}, {safe:true}, function(err, user){
+        console.log(user);
+        res.send('ok');
+      })
+    });
+    
+  });
+
   //Private room call
   this.get('/private/room', function (req, res) {
     console.log(req.user);
@@ -42,9 +54,7 @@ module.exports = function() {
           host: '192.168.1.37',
         }
       });
-      
-    })
-    
+    });
   });
 
 

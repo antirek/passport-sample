@@ -150,3 +150,15 @@ html
             span#their-id ...
           p
             a#end-call.pure-button.pure-button-error(href='#') End call
+
+        h4 Add friend
+          input#friend_username(type='text')
+          a#add_friend Add
+          script.
+            $('#add_friend').bind('click', function(e){
+              $.post('/private/addfriend', 
+                {friend_username: $('#friend_username').val()}, 
+                function(data){
+                  console.log(data);
+                })
+            });
